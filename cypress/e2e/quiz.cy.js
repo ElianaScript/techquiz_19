@@ -3,7 +3,7 @@ describe('Tech Quiz e2e', () => {
         cy.fixture('questions.json').then((questions) => {
             cy.intercept("GET", '/api/questions', { body: questions}).as("getQuestions");
         });
-        cy.visit('/');
+        cy.visit('http://127.0.0.1:3001/');
     });
 
     it('starts the quiz and goes through questions', () => {
@@ -22,6 +22,6 @@ describe('Tech Quiz e2e', () => {
         cy.get('[data-testid=next-button]').click();
 
         cy.contains('Restart Quiz').click();
-        cy.contains('Start Quix').should('be.visible');
+        cy.contains('Start Quiz').should('be.visible');
     });
 });
